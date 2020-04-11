@@ -1,15 +1,28 @@
 import React ,{useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import * as Font from 'expo-font' ;
+import {AppLoading} from 'expo' ;
 
 import Header from './components/Header' ;
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen'
 import GameOverScreen from './screens/GameOverScreen'
 
+const fetchFonts = () =>{
+  Font.loadAsync({
+    'voltaire' : require('./assets/fonts/Voltaire-Regular.ttf'),
+  }) ;
+}
+
 export default function App() {
 
+  const [dataLoaded, setDataLoaded] = useState(false) ;
+
+  if(!dataLoaded) {
+    return <AppLoading startAsync={fetchFonts} onFinish={() => setDataLoaded(true)} onError={(err) => console.log(err)} /> 
+  }
   const [userNumber, setUserNumber]= useState() ;
-  const [guessRounds, setGuessRounds] = useState(0)
+  const [guessRounds, setGuessRounds] = useState(0) ;
 
   const configNewGameHandler = () =>{
     setGuessRounds(0) ;
