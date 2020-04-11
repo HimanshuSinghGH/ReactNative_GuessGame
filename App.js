@@ -16,13 +16,14 @@ const fetchFonts = () =>{
 
 export default function App() {
 
-  const [dataLoaded, setDataLoaded] = useState(false) ;
-
-  if(!dataLoaded) {
-    return <AppLoading startAsync={fetchFonts} onFinish={() => setDataLoaded(true)} onError={(err) => console.log(err)} /> 
-  }
   const [userNumber, setUserNumber]= useState() ;
   const [guessRounds, setGuessRounds] = useState(0) ;
+  const [dataLoaded, setDataLoaded] = useState(false) ;
+  
+  if(!dataLoaded) {
+    return( <AppLoading startAsync={fetchFonts} onFinish={() => setDataLoaded(true)} onError={(err) => console.log(err)} /> 
+    )};
+  
 
   const configNewGameHandler = () =>{
     setGuessRounds(0) ;
