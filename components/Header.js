@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
 
     headerTitle:{
-        fontSize:20,
+        fontSize:18,
         color:"black",
         fontFamily:'voltaire'
     }

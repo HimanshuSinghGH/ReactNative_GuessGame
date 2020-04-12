@@ -9,9 +9,10 @@ import GameScreen from './screens/GameScreen'
 import GameOverScreen from './screens/GameOverScreen'
 
 const fetchFonts = () =>{
-  Font.loadAsync({
+  
+  return (Font.loadAsync({
     'voltaire' : require('./assets/fonts/Voltaire-Regular.ttf'),
-  }) ;
+  })) ;
 }
 
 export default function App() {
@@ -19,16 +20,16 @@ export default function App() {
   const [userNumber, setUserNumber]= useState() ;
   const [guessRounds, setGuessRounds] = useState(0) ;
   const [dataLoaded, setDataLoaded] = useState(false) ;
-  
+
   if(!dataLoaded) {
     return( <AppLoading startAsync={fetchFonts} onFinish={() => setDataLoaded(true)} onError={(err) => console.log(err)} /> 
     )};
   
-
   const configNewGameHandler = () =>{
     setGuessRounds(0) ;
     setUserNumber(null) ;
-  }
+  };
+
   const startGameHandler = (selectedNumber) => {
     setUserNumber(selectedNumber) ;
     setGuessRounds(0) ;
